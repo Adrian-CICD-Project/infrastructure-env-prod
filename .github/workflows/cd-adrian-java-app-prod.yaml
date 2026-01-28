@@ -1,0 +1,15 @@
+name: CD - adrian-java-app - prod
+
+on:
+    push:
+        branches: [main]
+        paths:
+            - "values/adrian-java-app/**"
+            - "k8s/adrian-java-app/**"
+    workflow_dispatch:
+
+jobs:
+    validate:
+        uses: Adrian-CICD-Project/ci-cd-templates/.github/workflows/validate-manifests.yml@main
+        with:
+            app-name: adrian-java-app
