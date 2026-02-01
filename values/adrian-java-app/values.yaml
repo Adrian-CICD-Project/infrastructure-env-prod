@@ -1,6 +1,6 @@
 image:
   repository: acrfordevopspoc01adrian.azurecr.io/adrian-java-app
-  tag: "1.0.0"
+  tag: "1.0.1"
   pullPolicy: IfNotPresent
 
 replicaCount: 1
