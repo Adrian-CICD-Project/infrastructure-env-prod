@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adrian-java-app
+  labels:
+    app: adrian-java-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: adrian-java-app
+  template:
+    metadata:
+      labels:
+        app: adrian-java-app
+    spec:
+      containers:
+        - name: adrian-java-app
+          image: acrfordevopspoc01adrian.azurecr.io/adrian-java-app:1.0.0
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "dev"
+            - name: JAVA_OPTS
+              value: "-Xms128m -Xmx256m"
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "128Mi"
+            limits:
+              cpu: "100m"
+              memory: "256Mi"

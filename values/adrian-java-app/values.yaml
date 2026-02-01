@@ -1,0 +1,23 @@
+image:
+  repository: acrfordevopspoc01adrian.azurecr.io/adrian-java-app
+  tag: "1.0.1"
+  pullPolicy: IfNotPresent
+
+replicaCount: 1
+
+resources:
+  requests:
+    cpu: "50m"
+    memory: "128Mi"
+  limits:
+    cpu: "100m"
+    memory: "256Mi"
+
+env:
+  SPRING_PROFILES_ACTIVE: "dev"
+  JAVA_OPTS: "-Xms128m -Xmx256m"
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
