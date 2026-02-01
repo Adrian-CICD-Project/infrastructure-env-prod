@@ -25,7 +25,7 @@ After merging a PR to this repository:
 
 The `cd-devops-project-prod` workflow automatically validates Kubernetes manifest YAML syntax before deployment.
 
-> **Note:** Workflow logic is defined in [ci-cd-templates/validate-manifests.yml](https://github.com/devops-project-adrian-dmytryk/ci-cd-templates/blob/main/.github/workflows/validate-manifests.yml)
+> **Note:** Workflow logic is defined in [ci-cd-templates/validate-manifests.yml](https://github.com/Adrian-CICD-Project/ci-cd-templates/blob/main/.github/workflows/validate-manifests.yml)
 
 ---
 

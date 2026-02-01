@@ -1,10 +1,6 @@
 image:
-  repository: acrfordevopspoc01-adrian.azurecr.io/devops-project
-<<<<<<< HEAD
+  repository: acrfordevopspoc01adrian.azurecr.io/devops-project
   tag: "1.0.3"
-=======
-  tag: "1.0.3"
->>>>>>> aac6251 (Run)
   pullPolicy: IfNotPresent
 
 replicaCount: 2
