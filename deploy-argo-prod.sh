@@ -4,7 +4,7 @@
 RESOURCE_GROUP="rg-devops-poc01"
 CLUSTER_NAME="devops-poc01-prod"
 CONTEXT="devops-poc01-prod"
-MANIFEST="argocd-devops-project-prod.yaml"
+MANIFEST="argocd-adrian-java-app-prod.yaml"
 
 echo "---------------------------------------------------"
 echo "🚨 WDRAŻANIE NA ŚRODOWISKO: PRODUKCJA (PROD)"
