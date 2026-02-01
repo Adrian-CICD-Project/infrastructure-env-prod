@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: adrian-java-app
-          image: acrfordevopspoc01adrian.azurecr.io/adrian-java-app:1.0.0
+          image: acrfordevopspoc01adrian.azurecr.io/adrian-java-app:1.0.1
           ports:
             - containerPort: 8080
           env:
