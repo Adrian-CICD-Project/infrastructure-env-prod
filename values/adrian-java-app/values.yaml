@@ -14,7 +14,7 @@ resources:
     memory: "256Mi"
 
 env:
-  SPRING_PROFILES_ACTIVE: "dev"
+  SPRING_PROFILES_ACTIVE: "prod"
   JAVA_OPTS: "-Xms128m -Xmx256m"
 
 service:
