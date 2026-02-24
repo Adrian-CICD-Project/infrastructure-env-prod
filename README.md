@@ -8,6 +8,9 @@ This repository contains the **PROD** (production) environment configuration for
 |------|-------------|
 | `values/devops-project/values.yaml` | Application values for PROD |
 | `k8s/devops-project/` | Kubernetes manifests for PROD |
+| `k8s/adrian-java-app/` | Kubernetes manifests for adrian-java-app |
+
+> **Security:** All deployments include hardened `securityContext` (runAsNonRoot, readOnlyRootFilesystem, drop ALL capabilities).
 
 ---
 
