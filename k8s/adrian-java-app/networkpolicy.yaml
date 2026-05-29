@@ -1,0 +1,20 @@
+# Restricts ingress to the application pods: only TCP/8080 is allowed
+# (ingress controller traffic + Prometheus scrape of /actuator/prometheus).
+# All other inbound connections are denied. Egress is left unrestricted so
+# DNS, ACR pulls and outbound calls keep working.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: adrian-java-app
+  labels:
+    app: adrian-java-app
+spec:
+  podSelector:
+    matchLabels:
+      app: adrian-java-app
+  policyTypes:
+    - Ingress
+  ingress:
+    - ports:
+        - protocol: TCP
+          port: 8080

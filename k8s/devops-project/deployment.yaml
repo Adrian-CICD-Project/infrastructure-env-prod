@@ -14,6 +14,9 @@ spec:
       labels:
         app: devops-project
     spec:
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
       containers:
         - name: devops-project
           image: acrfordevopspoc01adrian.azurecr.io/devops-project:1.0.3

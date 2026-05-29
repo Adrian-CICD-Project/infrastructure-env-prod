@@ -14,6 +14,9 @@ spec:
       labels:
         app: adrian-java-app
     spec:
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
       containers:
         - name: adrian-java-app
           image: acrfordevopspoc01adrian.azurecr.io/adrian-java-app:1.0.1
