@@ -1,0 +1,11 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: adrian-java-app
+  labels:
+    app: adrian-java-app
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: adrian-java-app

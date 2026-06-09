@@ -22,6 +22,24 @@ spec:
           image: acrfordevopspoc01adrian.azurecr.io/devops-project:1.0.3
           ports:
             - containerPort: 8080
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            periodSeconds: 5
+            failureThreshold: 30
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+            periodSeconds: 10
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+            periodSeconds: 10
+            failureThreshold: 3
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: "prod"

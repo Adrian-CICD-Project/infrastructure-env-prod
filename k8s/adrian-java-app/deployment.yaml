@@ -1,11 +1,23 @@
-apiVersion: apps/v1
-kind: Deployment
+# UWAGA: plik celowo nazywa się deployment.yaml, mimo że zawiera Rollout
+# (Argo Rollouts) - workflow promocji podmienia w nim linię "image:" po nazwie
+# pliku. Canary: 50% ruchu -> pauza 60s -> pełny rollout.
+# Wymaga kontrolera argo-rollouts (instalowany przez platform-apps na PROD).
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: adrian-java-app
   labels:
     app: adrian-java-app
 spec:
-  replicas: 1
+  # replicas zarządza HPA (hpa.yaml), minimum 2 pody
+  strategy:
+    canary:
+      maxSurge: 1
+      maxUnavailable: 0
+      steps:
+        - setWeight: 50
+        - pause:
+            duration: 60s
   selector:
     matchLabels:
       app: adrian-java-app
@@ -22,6 +34,24 @@ spec:
           image: acrfordevopspoc01adrian.azurecr.io/adrian-java-app:1.0.1
           ports:
             - containerPort: 8080
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            periodSeconds: 5
+            failureThreshold: 30
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+            periodSeconds: 10
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+            periodSeconds: 10
+            failureThreshold: 3
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: "prod"
